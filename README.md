@@ -186,8 +186,13 @@ npm test
 npm run build
 ```
 
-Releasing: bump `version` in `package.json`, update `CHANGELOG.md`, push a `vX.Y.Z` tag. GitHub Actions
-publishes to npm (needs an `NPM_TOKEN` repository secret).
+Releasing: update `CHANGELOG.md`, then
+
+```bash
+npm version patch   # or minor / major: bumps package.json, commits and tags vX.Y.Z
+npm publish         # runs typecheck, tests and build first
+git push --follow-tags
+```
 
 ## License
 
