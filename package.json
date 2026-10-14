@@ -1,0 +1,65 @@
+{
+  "name": "@frkntmbs/strapi-plugin-audit-log",
+  "version": "1.0.0",
+  "description": "Append-only admin audit log for Strapi 5 Community Edition: who did what and when, tamper-proof on Postgres and MySQL",
+  "license": "MIT",
+  "author": "Furkan Tombas",
+  "homepage": "https://github.com/frkntmbs/strapi-plugin-audit-log#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frkntmbs/strapi-plugin-audit-log.git"
+  },
+  "bugs": {
+    "url": "https://github.com/frkntmbs/strapi-plugin-audit-log/issues"
+  },
+  "keywords": [
+    "strapi",
+    "strapi-plugin",
+    "strapi-5",
+    "audit-log",
+    "audit",
+    "append-only"
+  ],
+  "strapi": {
+    "kind": "plugin",
+    "name": "audit-log",
+    "displayName": "Audit Log",
+    "description": "Immutable record of admin panel actions"
+  },
+  "main": "./dist/server/index.js",
+  "types": "./dist/server/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-server": {
+      "types": "./dist/server/index.d.ts",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "strapi-server.js",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
